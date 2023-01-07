@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizespeed;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    overflow-y: overlay;
+}
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
+}
+:root {
+    --primary: #fe2c55;
+    --black: #000;
+    --white: #fff;
+    --text-color: #161823;
+}
+/* .App{
+  
+} */
