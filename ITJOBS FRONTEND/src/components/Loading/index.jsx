@@ -1,12 +1,12 @@
 import { CSSProperties } from "react";
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import SyncLoader  from "react-spinners/SyncLoader";
 const override: CSSProperties = {
   display: "block",
   margin: "0 auto",
 };
-const loadingStyle={
+const loadingStyle= {
 textAlign:"center",
-backgroundColor:" #282c34",
+backgroundColor:" #ffff",
 display:" flex",
 justifyContent:"center",
 alignItems:"center",
@@ -16,11 +16,11 @@ height:" 100vh",
 const Loading = () => {
   return (
         <div style={loadingStyle} className="loading">
-        <ClimbingBoxLoader
+        <SyncLoader 
         loading={true}
         color="#ff7400"
         cssOverride={override}
-        size={30}
+        size={15}
         aria-label="Loading Spinner"
       />
         </div>

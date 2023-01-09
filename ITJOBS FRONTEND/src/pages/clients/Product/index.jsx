@@ -1,13 +1,17 @@
-import { useState } from "react";
+import Select from "react-select";
 const Product = () => {
-  let [loading, setLoading] = useState(true);
+   const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
   return (
     <>
-      <div className="sweet-loading">
-        <button onClick={() => setLoading(!loading)}>Toggle Loader</button>
-      
-      </div>
+ <Select 
+ isMulti
+ options={options} />
     </>
   );
 };
+
 export default Product;

@@ -3,7 +3,14 @@ import React from "react";
 import config from "~/config";
 import { DefaultLayout } from "~/layouts";
 
-// import Home from "@/pages/Home";
+// import Home from "~/pages/clients/Home";
+// import About from "~/pages/clients/About";
+// import Detail from "~/pages/clients/Detail";
+// import Cart from "~/pages/clients/Cart";
+// import Product from "~/pages/clients/Product";
+// import Login from "~/pages/clients/Login";
+// import ErrorPage from "~/pages/clients/ErrorPage";
+
 const Home = React.lazy(() => import("~/pages/clients/Home"));
 const About = React.lazy(() => import("~/pages/clients/About"));
 const Detail = React.lazy(() => import("~/pages/clients/Detail"));

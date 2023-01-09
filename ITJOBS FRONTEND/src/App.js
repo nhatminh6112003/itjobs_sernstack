@@ -1,20 +1,20 @@
 import React from "react";
-import "./App.css";
-import axios from "axios";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Fragment, Suspense } from "react";
 import { publicRoutes, privateRoutes } from "./routes";
 import PrivateRoutes from "~/utils/PrivateRoutes.jsx";
 import { DefaultLayout } from "./layouts";
 import Loading from "./components/Loading";
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   return (
+     <div className="App">
     <Suspense fallback={<Loading />}>
-      <Router>
-        <div className="App">
+    <Router>
           <Routes>
-            {publicRoutes.map((route, index) => {
+            {publicRoutes.map((route) => {
               const Page = route.component;
               let Layout = DefaultLayout.clientLayout;
               if (route.layout) {
@@ -25,7 +25,7 @@ function App() {
 
               return (
                 <Route
-                  key={index}
+                  key={uuidv4()}
                   path={route.path}
                   element={
                     <Layout>
@@ -45,9 +45,11 @@ function App() {
               }
 
               return (
-                <Route element={<PrivateRoutes />}>
+                <Route 
+                key={uuidv4()} 
+                element={<PrivateRoutes />}>
                   <Route
-                    key={index}
+                    key={uuidv4()}
                     path={route.path}
                     element={
                       <Layout>
@@ -59,9 +61,9 @@ function App() {
               );
             })}
           </Routes>
-        </div>
       </Router>
     </Suspense>
+        </div>
   );
 }
 
