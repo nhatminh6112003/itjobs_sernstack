@@ -13,11 +13,11 @@ alignItems:"center",
 width: "100%",
 height:" 100vh",
 }
-const Loading = () => {
+const Loading = ({status=true}) => {
   return (
         <div style={loadingStyle} className="loading">
         <SyncLoader 
-        loading={true}
+        loading={status}
         color="#ff7400"
         cssOverride={override}
         size={15}

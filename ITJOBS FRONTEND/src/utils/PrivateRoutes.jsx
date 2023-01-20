@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import {useSelector} from "react-redux"
+import config from "~/config/config.routes";
 const PrivateRoutes = () => {
   //sử dụng cú pháp nested route
   //Đê tạo ra một nested route thì sử dụng cú pháp <Route element={parent}> <Route element={child}/> </Route>
@@ -22,9 +23,9 @@ const PrivateRoutes = () => {
   //               </Route>
   const user=useSelector(state=>state.auth.login.currentUser);
 
-  let auth = { token: user?.accessToken };
+  let auth = { token: user?.accessToken};
   
-  return auth.token ? <Outlet /> : <Navigate to="/login" />;
+  return auth.token ? <Outlet /> : <Navigate to={config.clientsRoutes.login} />;
 };
 
 export default PrivateRoutes;

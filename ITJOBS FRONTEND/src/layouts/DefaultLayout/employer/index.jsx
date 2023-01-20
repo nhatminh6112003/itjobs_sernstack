@@ -1,13 +1,18 @@
-import Header from "~/layouts/Components/employer/Header";
-import Footer from "~/layouts/Components/employer/Footer";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 
-export const employerLayout = ({ children }) => {
+import Header from "~/layouts/Components/employer/Header";
+import EmployerStyles,{cx} from "./EmployerStyles";
+// import styles from "./employer.module.css";
+const Footer = React.lazy(() => import("~/layouts/Components/employer/Footer"));
+export const employerLayout = ({ children}) => {
     return (
-      <>
-        <Header />
-        <main>{children}</main>
+      <EmployerStyles>
+         <Header />
+         <main>{React.cloneElement(children,{cx})}</main>
+        <Suspense fallback={<div>....loading</div>}>
         <Footer />
-      </>
+      </Suspense>
+      </EmployerStyles>
     );
   };
   

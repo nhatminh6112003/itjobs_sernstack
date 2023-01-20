@@ -64,8 +64,8 @@ class User {
       res.cookie("userRefreshToken", refreshToken, {
         maxAge: 3.154e10, // 1 year
         sameSite: "strict",
-        secure: false,
-        httpOnly: true,
+        secure: false,  
+        httpOnly: true, 
       });
       return res.json({
         ...responseStatus.SUCCESS,

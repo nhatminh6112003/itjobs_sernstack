@@ -1,7 +1,7 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import styles from "./itemLoading.module.css";
-import React from 'react'
+
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);

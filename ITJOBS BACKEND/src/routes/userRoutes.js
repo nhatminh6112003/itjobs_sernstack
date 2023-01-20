@@ -10,7 +10,7 @@ router.get(
 );
 router.get("/home", userController.home);
 router.get("/viewpdf", userController.viewPdf);
-router.get("/dataUser",AuthMiddleWear.protect,userController.dataUser);
+router.get("/dataUser",userController.dataUser);
 
 router.patch("/profile", userController.updateUser);
 

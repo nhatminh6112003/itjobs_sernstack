@@ -6,7 +6,8 @@ const axiosClient = axios.create({
     "Content-Type": "application/json",
   },
 });
-
+  
+axios.defaults.withCredentials = true
 // Add a request interceptor
 axiosClient.interceptors.request.use(
   function (config) {
