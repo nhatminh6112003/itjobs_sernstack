@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate} from "react-router";
 import { Link,Navigate } from "react-router-dom";
+import { useDispatch,useSelector} from "react-redux";
+import { useMutation } from "react-query";
+import classNames from "classnames/bind";
 
 import axiosClient from "~/api/axiosClient";
+
 import { loginStart, loginSuccess } from "~/features/authentication/slices/authSlice";
-import { useDispatch,useSelector} from "react-redux";
 import config from "~/config/config.routes";
 import styles from "./Login.module.css";
-import classNames from "classnames/bind";
-import { useMutation } from "react-query";
+import LoginForm from "./Form/LoginForm";
 
-import Loading from "~/components/Loading";
-const cx=classNames.bind(styles)
+const cx=classNames.bind(styles);
 const Login = () => {
   const navigate = useNavigate();
   const dispatch=useDispatch();
@@ -21,21 +22,18 @@ const Login = () => {
       return axiosClient.post("/users/login",body)
     }
   })
-  const errorForm=() => {
-    if(error.response.data?.message){
-      return error.response.data
-    }
-    return null
-  }
+  const handleLoginFormSubmit=(values) => { 
+    console.log('formsubmit',values)
+   }
 
 
-  const handleSubmit = async (e) => {
-    const [email, password] = e.target.elements;
-    e.preventDefault();
-    mutate({
-      email:email.value,
-      password:password.value
-    })
+  // const handleSubmit = async (e) => {
+    // const [email, password] = e.target.elements;
+    // e.preventDefault();
+    // mutate({
+    //   email:email.value,
+    //   password:password.value
+    // })
     
     // try {
     //   dispatch(loginStart());
@@ -66,7 +64,7 @@ const Login = () => {
     //   }
     //   return { success: false, message: error.message };
     // }
-  };
+  // };
 
   // const getDataUser = async () => {
   //   const response = await axiosClient.get("/users/dataUser");
@@ -176,7 +174,6 @@ const Login = () => {
                 </Link>
               </li>
               <li>
-                {" "}
                 <Link
                   to={config.clientsRoutes.register}
                   title="Đăng ký"
@@ -186,55 +183,9 @@ const Login = () => {
               </li>
             </ul>
             <div className={cx("form-login")}>
-              <form 
-                onSubmit={handleSubmit}
-                name="frmLogin"
-                id={cx("frmLogin")}
-                method="POST"
-                noValidate="true"
-              >
-                <div className={cx("form-group","form-text")}>
-                  <input
-                    required=""
-                    data-pristine-required-message="Vui lòng nhập email của bạn"
-                    type="text"
-                    name="email"
-                    id={cx("email")}
-                    autoComplete="on"
-                  />
-                  <label htmlFor="">Vui lòng nhập email</label>
-                </div>
-                <div className={cx("form-group","form-text")}>
-                  <input
-                    required=""
-                    data-pristine-required-message="Vui lòng nhập password của bạn"
-                    type="password"
-                    name="password"
-                    autoComplete="off"
-                  />
-                  <label htmlFor="">Vui lòng nhập mật khẩu</label>
-                </div>
-                <div className={cx("form-group","form-checkbox")}>
-                  <input
-                    type="checkbox"
-                    name="chkSave"
-                    defaultValue={1}
-                    id="chkSave"
-                  />
-                  <label htmlFor="chkSave">Tự động đăng nhập</label>
-                </div>
-                <div style={{ color: "red" }} />
-                <div className={cx("form-group","form-submit")}>
-                  
-                  <button
-                    type="submit"
-                    id={cx("submit_login")}
-                    className={cx("btn-gradient")}
-                  >
-                    Đăng nhập
-                  </button>
-                </div>
-              </form>
+
+        <LoginForm onSubmit={handleLoginFormSubmit} className={cx}/>
+             
             </div>
             <div className={cx("forgot-password")}>
               <a href="https://careerbuilder.vn/vi/jobseekers/forgotpassword">
@@ -242,7 +193,7 @@ const Login = () => {
               </a>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   </div>

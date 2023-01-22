@@ -8,7 +8,7 @@ import {
   employerPublicRoutes,
   employerPrivateRoutes } 
   from "./routes";
-import Loading from "./components/Loading";
+import Loading from "./components/ui/Loading";
 import { renderPublicRoutes,renderPrivateRoutes } from "./utils/renderRoutes";
 function App() {
 

@@ -8,7 +8,7 @@ import Cart from "~/pages/clients/Cart";
 
 const Login = React.lazy(() => import("~/pages/employer/Login"));
 const Register = React.lazy(() => import("~/pages/employer/Register"));
-const ErrorPage = React.lazy(() => import("~/components/ErrorPage"));
+const ErrorPage = React.lazy(() => import("~/components/layouts/ErrorPage"));
 
 const employerPublicRoutes = [
   { path: config.employerRoutes.register, component: Register },

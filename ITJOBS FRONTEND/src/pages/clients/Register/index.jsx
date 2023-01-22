@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import classNames from "classnames/bind";
 
 
+import RegisterForm from "./Form/RegisterForm";
 import config from "~/config/config.routes";
 import styles from "./Register.module.css"
-import classNames from "classnames/bind";
 const cx=classNames.bind(styles)
 const Register = () => {
   return (
@@ -140,118 +141,7 @@ const Register = () => {
                 <span>hoặc </span>
               </div> */}
               <div className={cx("form-register")}>
-                <form
-                  name={cx("frmRegister")}
-                  id={cx("frmRegister")}
-                  method="post"
-                  action="https://careerbuilder.vn/vi/jobseekers/member/register"
-                  autoComplete="off"
-                >
-                  <div className={cx("form-group","form-text")}>
-                    <input
-                      name={cx("firstname")}
-                      id={cx("firstname")}
-                      maxLength={15}
-                      type="text"
-                      onkeyup="this.setAttribute('value', this.value);"
-                      defaultValue=""
-                    />
-                    <label htmlFor="">* Tên</label>
-                    <span
-                      className="error_firstname"
-                      style={{ display: "none" }}
-                    />
-                  </div>
-                  <div className={cx("form-group","form-text")}>
-                    <input
-                      name={cx("lastname")}
-                      id={cx("lastname")}
-                      maxLength={50}
-                      type="text"
-                      onkeyup="this.setAttribute('value', this.value);"
-                      defaultValue=""
-                    />
-                    <label htmlFor="">* Họ và tên lót</label>
-                    <span
-                      className="error_lastname"
-                      style={{ display: "none" }}
-                    />
-                  </div>
-                  <div className={cx("form-group","form-text")}>
-                    <input
-                      name="email"
-                      id="email"
-                      maxLength={50}
-                      type="text"
-                      onkeyup="this.setAttribute('value', this.value);"
-                      defaultValue=""
-                    />
-                    <label htmlFor="">* Email</label>
-                    <span className="error_email" style={{ display: "none" }} />
-                  </div>
-                  <div className={cx("form-group","form-text")}>
-                    <input
-                      type="password"
-                      name={cx("password")}
-                      id={cx("password")}
-                      maxLength={255}
-                      onkeyup="this.setAttribute('value', this.value);"
-                      defaultValue=""
-                    />
-                    <label htmlFor="">* Mật khẩu</label>
-                    <span
-                      className="error_password"
-                      style={{ display: "none" }}
-                    />
-                  </div>
-                  <div className={cx("form-group","form-text")}>
-                    <input
-                      type="password"
-                      name={cx("confirm_password")}
-                      id={cx("confirm_password")}
-                      maxLength={255}
-                      onkeyup="this.setAttribute('value', this.value);"
-                      defaultValue=""
-                    />
-                    <label htmlFor="">* Xác nhận mật khẩu</label>
-                    <span
-                      className="error_confirm_password"
-                      style={{ display: "none" }}
-                    />
-                  </div>
-                  <div className={cx("form-group","form-checkbox")}>
-                    <input
-                      type="checkbox"
-                      defaultChecked="checked"
-                      name="chkAgree"
-                      id="chkAgree"
-                      defaultValue={1}
-                    />
-                    <label htmlFor="chkAgree">
-                      Đồng ý với{" "}
-                      <a href="https://careerbuilder.vn/vi/jobseekers/security">
-                        Quy định bảo mật
-                      </a>{" "}
-                      và{" "}
-                      <a href="https://careerbuilder.vn/vi/jobseekers/use">
-                        Thỏa thuận sử dụng
-                      </a>{" "}
-                      của CareerBuilder.vn
-                    </label>
-                    <span
-                      className="error_chkAgree"
-                      style={{ display: "none" }}
-                    />
-                  </div>
-                  <div className="form-group form-submit">
-                    <input
-                      type="hidden"
-                      name="csrf_token_register"
-                      defaultValue="0735f55b0226e526857f0e0a51bc48a33e536442d2c56367ca0564e77c923769"
-                    />
-                    <button className={cx("btn-gradient")}>Đăng ký</button>
-                  </div>
-                </form>
+               <RegisterForm className={cx}/>
               </div>
 
             </div>

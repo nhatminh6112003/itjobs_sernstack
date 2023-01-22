@@ -8,7 +8,7 @@ import Cart from "~/pages/clients/Cart";
 
 const Login = React.lazy(() => import("~/pages/admin/Login"));
 
-const ErrorPage = React.lazy(() => import("~/components/ErrorPage"));
+const ErrorPage = React.lazy(() => import("~/components/layouts/ErrorPage"));
 
 const adminPublicRoutes = [
   { path: config.adminRoutes.login, component: Login},

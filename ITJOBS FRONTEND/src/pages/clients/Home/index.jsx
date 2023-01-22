@@ -7,7 +7,7 @@ import axiosClient from "~/api/axiosClient";
 import { logoutSuccess  } from "~/features/authentication/slices/authSlice";
 // import JobItem from "~/layouts/Components/clients/JobItem";
 import Banner from "~/layouts/Components/clients/Banner";
-import ItemLoading from "~/components/ItemLoading";
+import ItemLoading from "~/components/ui/ItemLoading";
 const JobItem = React.lazy(() => import("~/layouts/Components/clients/JobItem"));
 // const JobItem2 = React.lazy(() => import("~/layouts/Components/clients/JobItem2"));
 

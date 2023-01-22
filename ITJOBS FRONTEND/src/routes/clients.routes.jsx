@@ -14,7 +14,7 @@ const Dashboard = React.lazy(() => import("~/pages/clients/Dashboard"));
 const MyProfile = React.lazy(() => import("~/pages/clients/MyProfile"));
 
 
-const ErrorPage = React.lazy(() => import("~/components/ErrorPage"));
+const ErrorPage = React.lazy(() => import("~/components/layouts/ErrorPage"));
 
 const clientsPublicRoutes = [
   { path: config.clientsRoutes.home, component: Home },
