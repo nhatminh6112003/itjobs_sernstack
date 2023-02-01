@@ -4,6 +4,7 @@ import App from "./App";
 import { store, persistor } from "~/redux/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import Modal from 'react-modal';
 import {
   QueryClient,
   QueryClientProvider,  
@@ -14,7 +15,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 //   RouterProvider,
 // } from "react-router-dom";
 const queryClient = new QueryClient();
-
+Modal.setAppElement('#root');
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

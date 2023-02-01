@@ -3,8 +3,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes } from "react-router-dom";
 import {  Suspense } from "react";
 import { 
-  clientsPublicRoutes, 
-  clientsPrivateRoutes , 
+  jobSeekerPublicRoutes, 
+jobSeekerPrivateRoutes,
   employerPublicRoutes,
   employerPrivateRoutes } 
   from "./routes";
@@ -18,8 +18,8 @@ function App() {
     <Router>
           <Routes>
             {/* Clients */}
-              {renderPublicRoutes(clientsPublicRoutes, 'client')}
-              {renderPrivateRoutes(clientsPrivateRoutes, 'client')}   
+              {renderPublicRoutes(jobSeekerPublicRoutes, 'jobSeeker')}
+              {renderPrivateRoutes(jobSeekerPrivateRoutes, 'jobSeeker')}   
               {/* Employers */}
               {renderPublicRoutes(employerPublicRoutes, 'employer')}
               {renderPrivateRoutes(employerPrivateRoutes, 'employer')}   

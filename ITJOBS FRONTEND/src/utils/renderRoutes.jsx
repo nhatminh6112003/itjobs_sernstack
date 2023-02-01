@@ -14,10 +14,10 @@ const renderPublicRoutes = (routes,userType) => {
       const layouts = {
         [layout]: layout,
         [null]: Fragment,
-        client: DefaultLayout.clientLayout,
+        jobSeeker: DefaultLayout.jobSeekerLayout,
         employer: DefaultLayout.employerLayout,
         admin: DefaultLayout.adminLayout,
-        default: DefaultLayout.clientLayout
+        default: DefaultLayout.jobSeekerLayout
       };
       const Layout =  layouts[layout] || layouts[userType] || layouts.default;
       return (

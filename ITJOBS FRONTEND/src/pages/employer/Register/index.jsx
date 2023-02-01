@@ -83,7 +83,7 @@ const Register = ({cx}) => {
                     />
                     <a
                       className="check-email"
-                      href="javascript:void(0);"
+                      href=""
                       onclick="checkEmailExist();"
                     >
                       Kiểm tra sự tồn tại của email
@@ -487,7 +487,7 @@ const Register = ({cx}) => {
                     <div className="reCapcha" style={{ fontSize: 24 }}>
                       <a
                         onclick="refeshImgCaptcha('captchaim');"
-                        href="javascript:void(0);"
+                        href=""
                       >
                         {" "}
                         <em className="fa fa-repeat" />

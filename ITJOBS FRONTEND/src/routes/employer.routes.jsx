@@ -3,7 +3,7 @@ import React from "react";
 import config from "~/config/config.routes";
 
 
-import Cart from "~/pages/clients/Cart";
+import Cart from "~/pages/jobseeker/Cart";
 
 
 const Login = React.lazy(() => import("~/pages/employer/Login"));

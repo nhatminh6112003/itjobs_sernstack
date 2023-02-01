@@ -1,3 +1,3 @@
 export * from "./admin";
-export * from "./client";
+export * from "./jobseeker";
 export * from "./employer";

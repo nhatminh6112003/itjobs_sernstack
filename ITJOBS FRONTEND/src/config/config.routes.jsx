@@ -5,7 +5,7 @@ const adminRoutes = {
   login: "admin/login",
   errorPage: "*",
 };
-const clientsRoutes = {
+const jobSeekerRoutes = {
   home: "/",
   about: "/about",
   detail: "/detail/:id",
@@ -16,6 +16,7 @@ const clientsRoutes = {
   register: "/account/register",
   dashboard:"/jobseekers/dashboard",
   myProfile: "/jobseekers/my-profile",
+  changeTemplate: "/jobseekers/changetemplate",
   errorPage: "*",
 };
 const employerRoutes = {
@@ -25,7 +26,7 @@ const employerRoutes = {
 };
 
 const config = {
-  clientsRoutes,
+  jobSeekerRoutes,
   adminRoutes,
   employerRoutes
 

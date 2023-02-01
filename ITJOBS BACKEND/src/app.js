@@ -1,4 +1,4 @@
-import configViewEngine from "./config/viewEngine.js";
+import configViewEngine from "./config/viewEngine.config.js";
 
 import express from "express";
 import morgan from "morgan";

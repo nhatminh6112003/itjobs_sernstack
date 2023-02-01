@@ -195,7 +195,7 @@ const Header = () => {
           <Link to={config.employerRoutes.register  }>Đăng ký</Link>
         </div>
         <div className={cx("main-noti")} style={{ display: "none" }}>
-          <a href="javascript:void(0);">
+          <a href="">
             {" "}
             <span className="mdi mdi-cart" />
           </a>
@@ -212,7 +212,7 @@ const Header = () => {
             <CheckIcon fontSize="small" sx={{paddingRight:'5px'}} />
               <a
                 className="dropdown-item"
-                href="javascript:void(0);"
+                href=""
                 title="Change language"
               >
                 VI
@@ -231,7 +231,7 @@ const Header = () => {
           </div>
         </div>
         <div className={cx("main-candidates")}>
-          <Link to={config.clientsRoutes.home}>
+          <Link to={config.jobSeekerRoutes.home}>
             <em className="fa fa-external-link" />
             <h4>Dành cho Ứng Viên</h4>
           </Link>
@@ -262,7 +262,7 @@ const Header = () => {
               </a>
             </div>
             <div className="username">
-              <a href="javascript:void(0);">Xin chào!</a>
+              <a href="">Xin chào!</a>
               <div className="authentication-links">
                 <ul>
                   <li>

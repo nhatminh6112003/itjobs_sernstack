@@ -1,14 +1,13 @@
 import jwt from "jsonwebtoken";
 import responseStatus from "../constants/responseStatus";
 import dotenv from "dotenv";
-import userModel from "@src/models/userModel.js";
+import userModel from "@src/models/user.model.js";
 
 dotenv.config();
 
 class AuthMiddleWear {
   async protect(req, res, next) {
     let token;
-
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer ")
@@ -16,21 +15,12 @@ class AuthMiddleWear {
       token = req.headers.authorization.split(" ")[1];
     }
     // Nếu không có token hoặc token không hợp lệ, trả về lỗi 401 Unauthorized
-    if (!token) {
-      return res
-        .status(responseStatus.UNAUTHORIZED.status)
-        .send({ error: "Unauthorized" });
-    }
     try {
       // Xác thực token với khóa bí mật
-      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-      if (!decoded) {
-        return res
-          .status(responseStatus.UNAUTHORIZED.status)
-          .send({ error: "Unauthorized" });
-      }
-      const [{ email }] = decoded.payload;
-      const user = await userModel.findById({ email, user_type_id: 1 }, [
+    
+      const decoded = token &&  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      const { email,user_type_id } = decoded;  
+      const user = await userModel.findById({ email, user_type_id }, [
         "id",
         "email",
       ]);
@@ -44,8 +34,14 @@ class AuthMiddleWear {
       next();
     } catch (error) {
       // Nếu token không hợp lệ, trả về lỗi 401 Unauthorized
-      return res.status(401).send({ error: "Unauthorized" });
+      if (error.name === 'TokenExpiredError') {
+        return res.status(200).json({ code:401,message: error.message });
+      } else if (error.name === 'JsonWebTokenError') {
+        return res.status(200).json({code:401, message: error.message });
+      }
+       return res.json(responseStatus.UNAUTHORIZED);
     }
+   
   }
 
   authPage(permission) {

@@ -1,7 +1,8 @@
-import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import {useSelector} from "react-redux"
 import config from "~/config/config.routes";
+import authApi from "~/api/authApi";
+
 const PrivateRoutes = () => {
   //sử dụng cú pháp nested route
   //Đê tạo ra một nested route thì sử dụng cú pháp <Route element={parent}> <Route element={child}/> </Route>
@@ -14,18 +15,16 @@ const PrivateRoutes = () => {
   //                 <Route
   //                   key={index}
   //                   path={route.path}
-  //                   element={
+  //                   element={  
   //                     <Layout>
   //                       <Page />
   //                     </Layout>
   //                   }
   //                 />
   //               </Route>
-  const user=useSelector(state=>state.auth.login.currentUser);
-
-  let auth = { token: user?.accessToken};
+  const currentUser=useSelector(state=>state.auth.login.currentUser);
   
-  return auth.token ? <Outlet /> : <Navigate to={config.clientsRoutes.login} />;
+  return currentUser ? <Outlet /> : <Navigate to={config.jobSeekerRoutes.login} />;
 };
 
 export default PrivateRoutes;
