@@ -2,12 +2,33 @@ import React from "react";
 import styles from "./chosseTemplate.module.css";
 import classNames from "classnames/bind";
 import Modal from "react-modal";
-
-// const cx=classNames.bind(styles)
+import { CloseIcon } from "~/resources";
+const sx=classNames.bind(styles)
 const ChosseTemplate = ({ isShowing, hide, classNames: cx }) => {
   return isShowing ? (
     <>
-      <Modal>
+      <Modal
+        closeTimeoutMS={2000}
+        isOpen={isShowing}
+        onRequestClose={hide}
+        style={{
+          overlay: {
+            zIndex: "9999",
+            backgroundColor: "rgb(55 50 50 / 75%)",
+          },
+          content: {
+            overflow: "hidden",
+            padding: 0,
+            minWidth:"1200px",
+            backgroundColor: "#ffff",
+            height: "90%",
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%,-50%)",
+          },
+        }}
+      >
         <div
           className={cx("change-cv-template-modal", "fancybox-content")}
           style={{ display: "inline-block" }}
@@ -469,20 +490,8 @@ const ChosseTemplate = ({ isShowing, hide, classNames: cx }) => {
               </div>
             </div>
           </div>
-          <button
-            type="button"
-            data-fancybox-close=""
-            className={cx("fancybox-button", "fancybox-close-small")}
-            title="Close"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              version={1}
-              viewBox="0 0 24 24"
-            >
-              <path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z" />
-            </svg>
-          </button>
+          <CloseIcon className={sx("close-icon")} onClick={hide}/>
+
         </div>
       </Modal>
     </>

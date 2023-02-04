@@ -3,10 +3,11 @@ import config from "~/config/config.routes";
 import { logoutUser } from "~/features/authentication/authRequest";
 import { useNavigate } from "react-router-dom";
 import {useDispatch} from "react-redux"
+
 const SideBar = ({className:cx}) => {
   const navigate=useNavigate();
   const dispatch=useDispatch();
-
+  
   const handleLogout = () => {
     logoutUser(dispatch,navigate)
   }
@@ -15,7 +16,7 @@ const SideBar = ({className:cx}) => {
     <nav className={cx("side-navbar")}>
       <div className={cx("head-nav")}>
         <div className={cx("my-cb-center")}>
-          <h2>My CareerBuilder Center</h2>
+          <h2>My CareerBuilder Center </h2>
         </div>
         <ul className={cx("list-unstyled")}>
           <li>

@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 import { useCallback, useState } from "react";
 import Tips from "~/components/ui/Modal/Tips";
 import useModal from "~/hooks/useModal";
+import ChosseTemplate from "~/components/ui/Modal/ChosseTemplate";
 const cx = classNames.bind(styles);
 const ChangeTemplate = () => {
-  const { isShowing, toggle } = useModal();
-
+  const { isShowing, toggle } = useModal({
+    tips: false,
+    chooseTemplate: false,
+  });
   let [currentFont, changeFont] = useState("Roboto");
   let [currentFontSize, changeFontSize] = useState("fontCVsize14");
   let [language, changeLanguage] = useState("en");
-  const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
+ 
 
   const toggleLanguage = (e) => {
     changeLanguage(e.target.value);
@@ -117,7 +117,7 @@ const ChangeTemplate = () => {
                         <div className={cx("figcaption")}>
                           <h2>Công cụ</h2>
                         </div>
-                        <div className={cx("tips")} onClick={toggle}>
+                        <div className={cx("tips")} onClick={()=>toggle("tips")}>
                           <div className={cx("icon")}>
                             <em className={cx("mdi", "mdi-lightbulb")} />
                           </div>
@@ -148,12 +148,12 @@ const ChangeTemplate = () => {
                                   <p id="cv_template_name" />
                                 </div>
                                 <div className={cx("change")}>
-                                  <a
-                                    href="javascript:void(0);"
+                                  <Link
+                                    onClick={() => toggle('chooseTemplate')}
                                     className={cx("btn-change-template")}
                                   >
                                     Đổi Mẫu
-                                  </a>
+                                  </Link>
                                 </div>
                               </div>
                             </li>
@@ -1247,8 +1247,8 @@ const ChangeTemplate = () => {
             </div>
           </div>
           <Tips
-            isShowing={isShowing}
-            hide={toggle}
+            isShowing={isShowing.tips}
+            hide={() => toggle('tips')}
             title=">Gợi ý"
             content="Ảnh chân dung trong CV tuy không quyết định tất cả
                           nhưng lại có khả năng gây ấn tượng với Nhà tuyển dụng
@@ -1257,6 +1257,11 @@ const ChangeTemplate = () => {
                           cười vừa đủ tạo thiện cảm; Trang phục trong ảnh nên có
                           màu đơn sắc và tông tươi tắn, nhẹ nhàng; Phông nền của
                           ảnh không rườm rà hay có nhiều chi tiết phụ."
+          />
+          <ChosseTemplate 
+            isShowing={isShowing.chooseTemplate}
+            hide={() => toggle('chooseTemplate')}
+            classNames={cx}
           />
         </div>
       </div>
